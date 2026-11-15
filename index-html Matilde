@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nuxes Loop Technology – Sites que vendem</title>
+<meta name="description" content="Criação de sites institucionais, landing pages de alta conversão e lojas virtuais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f3f6f9; --surface:#ffffff; --ink:#0e1c2f; --muted:#52627a; --line:#d6dee8;
+  --blue:#2455ff; --blue-ink:#ffffff; --wa:#14a866; --wa-ink:#ffffff; --soft:#e6edff;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0a1220;--surface:#111c30;--ink:#eaf0fa;--muted:#9fb0c9;--line:#22324d;--blue:#6f93ff;--blue-ink:#0a1220;--soft:#18284a;--wa:#2bd08a;--wa-ink:#06241a}
+}
+:root[data-theme="dark"]{--bg:#0a1220;--surface:#111c30;--ink:#eaf0fa;--muted:#9fb0c9;--line:#22324d;--blue:#6f93ff;--blue-ink:#0a1220;--soft:#18284a;--wa:#2bd08a;--wa-ink:#06241a}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2.3rem,8vw,4.4rem);font-weight:800}
+h2{font-size:clamp(1.7rem,5vw,2.6rem);font-weight:800;margin-bottom:.6rem}
+h3{font-size:1.25rem;font-weight:600}
+p{margin:0 0 1rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+section{padding:4.5rem 0}
+.lead{color:var(--muted);max-width:60ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:52px;padding:.85rem 1.5rem;border-radius:999px;border:0;font:700 1rem var(--body);cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--wa);color:var(--wa-ink)}
+.btn-line{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn svg{width:22px;height:22px;fill:currentColor}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.bar{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+.logo{display:flex;align-items:center;gap:.6rem;font:800 1.1rem var(--display);text-decoration:none}
+.logo svg{width:30px;height:30px}
+nav{display:flex;gap:1.4rem}
+nav a{text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+@media(max-width:720px){nav{display:none}}
+
+.hero{padding:3.5rem 0 4.5rem}
+.hero-grid{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:860px){.hero-grid{grid-template-columns:1.25fr .75fr}}
+.hero p.lead{font-size:1.15rem;margin:1.4rem 0 2rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.loop{width:min(100%,340px);margin-inline:auto;display:block}
+.loop .ring{fill:none;stroke:var(--blue);stroke-width:14;stroke-linecap:round;stroke-dasharray:520 120;transform-origin:center;animation:close 2.2s .3s cubic-bezier(.3,.7,.2,1) forwards}
+.loop .ring2{fill:none;stroke:var(--line);stroke-width:14}
+.loop text{font:800 22px var(--display);fill:var(--ink)}
+@keyframes close{from{stroke-dasharray:380 260;transform:rotate(-60deg)}to{stroke-dasharray:640 0;transform:rotate(90deg)}}
+@media(prefers-reduced-motion:reduce){.loop .ring{animation:none;stroke-dasharray:640 0}html{scroll-behavior:auto}}
+
+.about{background:var(--surface);border-block:1px solid var(--line)}
+.about-grid{display:grid;gap:2rem}
+@media(min-width:860px){.about-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+.facts{display:grid;gap:1rem;align-content:start}
+.facts div{border-left:4px solid var(--blue);padding-left:1rem}
+.facts b{display:block;font-family:var(--display);font-size:1.15rem}
+.facts span{color:var(--muted)}
+
+.services{display:grid;gap:1.2rem;margin-top:2rem}
+@media(min-width:860px){.services{grid-template-columns:repeat(3,1fr)}}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.6rem}
+.svc svg{width:34px;height:34px;stroke:var(--blue);fill:none;stroke-width:2;margin-bottom:1rem}
+.svc p{color:var(--muted);margin:.5rem 0 0}
+
+.calc{background:var(--soft)}
+.calc-box{display:grid;gap:1.5rem;margin-top:2rem}
+@media(min-width:900px){.calc-box{grid-template-columns:1.4fr 1fr;align-items:start}}
+fieldset{border:0;margin:0 0 1.6rem;padding:0}
+legend{font:600 1.1rem var(--display);margin-bottom:.8rem;padding:0}
+.opts{display:grid;gap:.6rem}
+@media(min-width:560px){.opts{grid-template-columns:1fr 1fr}}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.opt label{display:flex;justify-content:space-between;gap:.8rem;align-items:center;min-height:54px;padding:.7rem 1rem;background:var(--surface);border:2px solid var(--line);border-radius:14px;cursor:pointer;font-weight:500}
+.opt label small{color:var(--muted);font-weight:400;text-align:right;font-size:.85rem}
+.opt input:checked+label{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+.opt input:focus-visible+label{outline:3px solid var(--blue);outline-offset:2px}
+.sum{background:var(--ink);color:var(--bg);border-radius:20px;padding:1.6rem;position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px)}
+.sum h3{margin-bottom:1rem}
+.sum ul{list-style:none;margin:0 0 1.2rem;padding:0;display:grid;gap:.4rem;font-size:.95rem}
+.sum li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dashed rgba(127,127,127,.4);padding-bottom:.4rem}
+.price{font:800 2.2rem var(--display);line-height:1.1}
+.sum .note{font-size:.85rem;opacity:.75;margin:.4rem 0 1.2rem}
+.sum .btn{width:100%}
+
+.cases{display:grid;gap:1.2rem;margin-top:2rem}
+@media(min-width:860px){.cases{grid-template-columns:repeat(3,1fr)}}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.6rem;display:flex;flex-direction:column;gap:1rem}
+.case h3{font-size:1.1rem}
+.case dt{font:700 .95rem var(--display);color:var(--blue)}
+.case dd{margin:.15rem 0 .9rem;color:var(--muted)}
+.case dd.res{color:var(--ink);font-weight:700}
+
+.stars{color:#c27500;letter-spacing:.08em;font-size:1.15rem;line-height:1}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .stars{color:#ffc247}}
+:root[data-theme="dark"] .stars{color:#ffc247}
+.reviews{background:var(--surface);border-block:1px solid var(--line)}
+.rv-top{display:grid;gap:1.5rem;margin:2rem 0}
+@media(min-width:860px){.rv-top{grid-template-columns:.8fr 1.2fr;align-items:start}}
+.rv-score{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:1.6rem}
+.rv-num{font:800 3.4rem var(--display);line-height:1}
+.rv-score .stars{margin:.5rem 0 .3rem;font-size:1.4rem}
+.rv-score p{color:var(--muted);font-size:.9rem;margin:0 0 1rem}
+.dist{display:grid;grid-template-columns:2.2rem 1fr 1.6rem;gap:.6rem;align-items:center;font-size:.85rem;color:var(--muted);margin-bottom:.35rem}
+.dist i{display:block;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.dist i b{display:block;height:100%;background:var(--blue)}
+.rv-rules{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.rv-rules li{border-left:4px solid var(--blue);padding-left:1rem;color:var(--muted)}
+.rv-rules b{display:block;color:var(--ink);font-family:var(--display);font-size:1.1rem}
+.rv-grid{display:grid;gap:1.2rem}
+@media(min-width:760px){.rv-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.rv-grid{grid-template-columns:repeat(3,1fr)}}
+.rv{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:1.4rem;display:flex;flex-direction:column;gap:.8rem}
+.rv p{margin:0;flex:1}
+.rv .who{font-weight:700;display:flex;flex-wrap:wrap;gap:.2rem .6rem;align-items:center}
+.rv .who small{color:var(--muted);font-weight:400;width:100%}
+.tag{font:500 .75rem var(--body);background:var(--soft);color:var(--ink);border-radius:99px;padding:.1rem .6rem}
+.rv-cta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+.rv-cta p{margin:0;font-weight:500;max-width:46ch}
+.rv-form{margin-top:2rem;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:1.6rem;max-width:680px}
+.rv-form>p{color:var(--muted)}
+.field{display:grid;gap:.4rem;margin-bottom:1.2rem}
+.field label{font-weight:600}
+.field input,.field textarea{font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.8rem 1rem;width:100%}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+#rvMsg{margin:1rem 0 0;font-weight:500}
+footer{padding:3rem 0;border-top:1px solid var(--line);text-align:center;color:var(--muted)}
+footer .cta{justify-content:center;margin-bottom:1.5rem}
+.fab{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:25;width:58px;height:58px;border-radius:50%;background:var(--wa);color:var(--wa-ink);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.fab svg{width:30px;height:30px;fill:currentColor}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#topo" aria-label="Nuxes Loop Technology">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="5"/><path d="M20 6a14 14 0 1 1-14 14" fill="none" stroke="var(--blue)" stroke-width="5" stroke-linecap="round"/></svg>
+      Nuxes Loop
+    </a>
+    <nav aria-label="Principal">
+      <a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#orcamento">Orçamento</a><a href="#avaliacoes">Avaliações</a>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>O seu negócio merece um site que vende todos os dias.</h1>
+      <p class="lead">Criamos sites, landing pages e lojas virtuais pensados para atrair clientes, gerar contactos e aumentar as suas vendas.</p>
+      <div class="cta">
+        <a class="btn btn-wa" data-wa="Olá! Vi o site da Nuxes Loop Technology e gostava de falar sobre o meu projeto." href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.900.9c.3.1.5.2.5.3.1.2.1.8-.1 1.400Z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a class="btn btn-line" href="#orcamento">Simular orçamento</a>
+      </div>
+    </div>
+    <svg class="loop" viewBox="0 0 300 300" role="img" aria-label="Círculo que se fecha, simbolizando a ligação entre empresa e digital">
+      <circle class="ring2" cx="150" cy="150" r="100"/>
+      <circle class="ring" cx="150" cy="150" r="100"/>
+      <text x="150" y="146" text-anchor="middle">Empresa</text>
+      <text x="150" y="176" text-anchor="middle">+ Digital</text>
+    </svg>
+  </div>
+</section>
+
+<section id="sobre" class="about">
+  <div class="wrap about-grid">
+    <div>
+      <h2>Sobre a Nuxes Loop Technology</h2>
+      <p class="lead">A nossa missão é eliminar a distância entre empresas de sucesso e o digital. Muitos negócios excelentes ainda não aparecem online como merecem. Nós fechamos esse ciclo: da primeira conversa ao site publicado, com foco em resultados que se medem em contactos e vendas.</p>
+    </div>
+    <div class="facts">
+      <div><b>Orientados a conversão</b><span>Cada página tem um objetivo claro e um próximo passo visível.</span></div>
+      <div><b>Mobile em primeiro lugar</b><span>A maioria dos seus clientes chega pelo telemóvel, por isso começamos aí.</span></div>
+      <div><b>Acompanhamento direto</b><span>Fala com quem constrói o seu projeto, sem intermediários.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="wrap">
+    <h2>Serviços</h2>
+    <p class="lead">Três formas de levar o seu negócio para o digital, conforme o seu objetivo.</p>
+    <div class="services">
+      <article class="svc">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg>
+        <h3>Sites institucionais</h3>
+        <p>Apresente a sua empresa com credibilidade: serviços, equipa, contactos e SEO base para ser encontrado no Google.</p>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg>
+        <h3>Landing pages de alta conversão</h3>
+        <p>Uma página, um objetivo: captar contactos ou vender uma oferta, com texto, design e botões desenhados para converter.</p>
+      </article>
+      <article class="svc">
+        <svg viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h10L20 7H6"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+        <h3>Lojas virtuais</h3>
+        <p>Venda 24 horas por dia, com catálogo, pagamentos seguros e gestão simples de produtos e encomendas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="orcamento" class="calc">
+  <div class="wrap">
+    <h2>Simule o seu orçamento</h2>
+    <p class="lead">Escolha as opções do seu projeto e veja uma estimativa instantânea. Depois, envie-a por WhatsApp para confirmarmos os detalhes.</p>
+    <div class="calc-box">
+      <div id="form">
+        <fieldset>
+          <legend>Que tipo de projeto precisa?</legend>
+          <div class="opts" id="g-type"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Que funcionalidades quer incluir?</legend>
+          <div class="opts" id="g-feat"></div>
+        </fieldset>
+      </div>
+      <aside class="sum" aria-live="polite">
+        <h3>O seu resumo</h3>
+        <ul id="lines"></ul>
+        <div class="price" id="total">–</div>
+        <p class="note">Estimativa indicativa. O valor final é confirmado após falarmos consigo.</p>
+        <a class="btn btn-wa" id="send" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacoes" class="reviews">
+  <div class="wrap">
+    <h2>O que os clientes dizem</h2>
+    <p class="lead">As estrelas são atribuídas pelo próprio cliente, de acordo com a sua satisfação real com o trabalho entregue. Nós não escolhemos a nota.</p>
+    <div class="rv-top">
+      <div class="rv-score">
+        <div class="rv-num" id="avg">–</div>
+        <div class="stars" id="avgStars" aria-hidden="true"></div>
+        <p id="cnt"></p>
+        <div id="dist"></div>
+      </div>
+      <ul class="rv-rules">
+        <li><b>A nota é do cliente</b>Cada cliente avalia depois de receber o projeto, com a sua própria classificação de 1 a 5 estrelas.</li>
+        <li><b>Nada é apagado ou alterado</b>Publicamos as avaliações tal como chegam, incluindo as críticas e as notas mais baixas.</li>
+        <li><b>A média reflete a realidade</b>A classificação geral é calculada apenas com as notas dadas pelos clientes. Quando a experiência não é a melhor, a nota desce e nós melhoramos.</li>
+      </ul>
+    </div>
+    <div class="rv-grid" id="rv"></div>
+    <div class="rv-form">
+      <h3>Deixe a sua avaliação</h3>
+      <p>Escolha as estrelas que correspondem à sua satisfação real com o trabalho entregue e escreva o seu comentário. A avaliação aparece nesta página.</p>
+      <div class="field"><label for="rvName">O seu nome</label><input id="rvName" maxlength="60" autocomplete="name"></div>
+      <fieldset>
+        <legend>A sua nota</legend>
+        <div class="opts">
+          <div class="opt"><input type="radio" name="rvs" id="rvs5" value="5"><label for="rvs5">★★★★★ <small>Excelente</small></label></div>
+          <div class="opt"><input type="radio" name="rvs" id="rvs4" value="4"><label for="rvs4">★★★★ <small>Bom</small></label></div>
+          <div class="opt"><input type="radio" name="rvs" id="rvs3" value="3"><label for="rvs3">★★★ <small>Razoável</small></label></div>
+          <div class="opt"><input type="radio" name="rvs" id="rvs2" value="2"><label for="rvs2">★★ <small>Fraco</small></label></div>
+          <div class="opt"><input type="radio" name="rvs" id="rvs1" value="1"><label for="rvs1">★ <small>Mau</small></label></div>
+        </div>
+      </fieldset>
+      <div class="field"><label for="rvText">O seu comentário</label><textarea id="rvText" rows="4" maxlength="400"></textarea></div>
+      <button class="btn btn-wa" id="rvSend" type="button">Publicar avaliação</button>
+      <p id="rvMsg" role="status"></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Vamos fechar o ciclo?</h2>
+    <p>Conte-nos a sua ideia e respondemos com um plano claro.</p>
+    <div class="cta">
+      <a class="btn btn-wa" data-wa="Olá! Gostava de falar sobre um projeto com a Nuxes Loop Technology." href="#" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+    <small>© <span id="yr"></span> Nuxes Loop Technology</small>
+  </div>
+</footer>
+
+<a class="fab" data-wa="Olá! Gostava de saber mais sobre os vossos serviços." href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg>
+</a>
+
+<script>
+// ===== CONFIGURAÇÃO =====
+// Número com indicativo e sem + (Angola: 244)
+const WHATSAPP_NUMBER = "244958528527";
+
+const TYPES = [
+  {id:"inst", name:"Site institucional", min:350000, max:975000},
+  {id:"land", name:"Landing page", min:175000, max:350000},
+  {id:"shop", name:"Loja virtual", min:500000, max:1700000}
+];
+const FEATURES = [
+  {id:"form", name:"Formulário de contacto", min:0, max:0},
+  {id:"book", name:"Marcações online", min:80000, max:180000},
+  {id:"blog", name:"Blog", min:60000, max:130000},
+  {id:"seo", name:"SEO avançado", min:150000, max:350000},
+  {id:"lang", name:"Vários idiomas", min:80000, max:200000},
+  {id:"pay", name:"Pagamentos online", min:150000, max:350000}
+];
+const TIMES = [
+  {id:"norm", name:"2 dias", mult:1}
+];
+// ========================
+
+const $ = s => document.querySelector(s);
+const eur = n => Math.round(n).toLocaleString("pt-PT",{maximumFractionDigits:0}).replace(/\u00a0/g,".").replace(/\s/g,".") + " Kz";
+const num = n => eur(n).replace(" Kz","");
+const rng = o => o.max ? num(o.min)+" – "+num(o.max)+" Kz" : "incluído";
+const state = {type:"inst", feats:new Set(), time:"norm"};
+
+function opt(group, kind, o, checked, hint){
+  const id = kind + "-" + o.id;
+  const d = document.createElement("div");
+  d.className = "opt";
+  d.innerHTML = `<input type="${kind==="feat"?"checkbox":"radio"}" name="${kind}" id="${id}" value="${o.id}" ${checked?"checked":""}><label for="${id}">${o.name}<small>${hint}</small></label>`;
+  d.querySelector("input").addEventListener("change", e => {
+    if(kind==="type") state.type = o.id;
+    else if(kind==="time") state.time = o.id;
+    else e.target.checked ? state.feats.add(o.id) : state.feats.delete(o.id);
+    render();
+  });
+  $(group).appendChild(d);
+}
+TYPES.forEach((o,i)=>opt("#g-type","type",o,i===0,rng(o)));
+FEATURES.forEach(o=>opt("#g-feat","feat",o,false,o.max?"+ "+rng(o):rng(o)));
+
+function render(){
+  const t = TYPES.find(x=>x.id===state.type);
+  const fs = FEATURES.filter(f=>state.feats.has(f.id));
+  const tm = TIMES.find(x=>x.id===state.time);
+  const r5 = n => Math.round(n/5000)*5000;
+  const low = r5((t.min + fs.reduce((a,f)=>a+f.min,0))*tm.mult);
+  const high = r5((t.max + fs.reduce((a,f)=>a+f.max,0))*tm.mult);
+  let html = `<li><span>${t.name}</span><span>${rng(t)}</span></li>`;
+  fs.forEach(f=>html += `<li><span>${f.name}</span><span>${rng(f)}</span></li>`);
+  html += `<li><span>Prazo de entrega</span><span>${tm.name}</span></li>`;
+  $("#lines").innerHTML = html;
+  $("#total").textContent = eur(low) + " a " + eur(high);
+  const msg = `Olá! Fiz uma simulação no site da Nuxes Loop Technology:\n\n` +
+    `Projeto: ${t.name}\n` +
+    `Funcionalidades: ${fs.length ? fs.map(f=>f.name).join(", ") : "nenhuma extra"}\n` +
+    `Prazo: ${tm.name}\n` +
+    `Estimativa: ${eur(low)} a ${eur(high)}\n\n` +
+    `Podemos falar sobre o meu projeto?`;
+  $("#send").href = waLink(msg);
+}
+
+function waLink(text){ return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text); }
+document.querySelectorAll("[data-wa]").forEach(a => a.href = waLink(a.dataset.wa));
+$("#yr").textContent = new Date().getFullYear();
+
+// ===== AVALIAÇÕES =====
+// Substitua pelos comentários e notas reais dos seus clientes e retire "demo:true".
+// A média e o gráfico são calculados automaticamente a partir desta lista.
+const REVIEWS = [
+  {name:"Maria S.", role:"Clínica, Luanda", stars:5, text:"O site ficou exatamente como imaginámos e começámos a receber marcações logo na primeira semana.", demo:true},
+  {name:"Carlos M.", role:"Loja de roupa, Benguela", stars:5, text:"Explicaram tudo com calma e entregaram dentro do prazo combinado.", demo:true},
+  {name:"Ana P.", role:"Escola de formação, Luanda", stars:4, text:"Gostámos do resultado. A revisão final demorou um pouco mais do que esperávamos, mas ficou resolvida.", demo:true},
+  {name:"João T.", role:"Restaurante, Huambo", stars:5, text:"Atendimento rápido no WhatsApp e um site simples de usar no telemóvel.", demo:true}
+];
+
+const starStr = n => "★".repeat(n) + "☆".repeat(5-n);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function paint(list){
+  const n = list.length;
+  if(!n){$("#rv").innerHTML="";$("#avg").textContent="–";$("#avgStars").textContent="";$("#cnt").textContent="Ainda sem avaliações";$("#dist").innerHTML="";return;}
+  const avg = list.reduce((a,r)=>a+r.stars,0)/n;
+  $("#avg").textContent = avg.toFixed(1).replace(".",",");
+  $("#avgStars").textContent = starStr(Math.round(avg));
+  $("#cnt").textContent = "Média de " + n + " avaliações" + (list.every(r=>r.demo) ? " (exemplos ilustrativos)" : "");
+  let d = "";
+  for(let s=5;s>=1;s--){
+    const c = list.filter(r=>r.stars===s).length;
+    d += `<div class="dist"><span>${s} ★</span><i><b style="width:${Math.round(c/n*100)}%"></b></i><span>${c}</span></div>`;
+  }
+  $("#dist").innerHTML = d;
+  $("#rv").innerHTML = list.map(r => `<article class="rv"><div class="stars" role="img" aria-label="${r.stars} de 5 estrelas">${starStr(r.stars)}</div><p>“${esc(r.text)}”</p><div class="who">${esc(r.name)}${r.demo?'<span class="tag">Exemplo</span>':''}<small>${esc(r.role||"")}</small></div></article>`).join("");
+}
+paint(REVIEWS);
+
+// Avaliações dos clientes (versão para o seu domínio, com Firebase Firestore)
+// Preencha com os dados do seu projeto Firebase (ver instruções).
+const FIREBASE = {projectId:"nuxes-loop2", apiKey:"AIzaSyAp5jw64NAcTj8mtMAeiqBKA9WBbELBHj4"};
+
+(function(){
+  const msg = t => $("#rvMsg").textContent = t;
+  if(!FIREBASE.projectId || !FIREBASE.apiKey){
+    $("#rvSend").disabled = true;
+    msg("O envio de avaliações ainda não está configurado.");
+    return;
+  }
+  const url = `https://firestore.googleapis.com/v1/projects/${FIREBASE.projectId}/databases/(default)/documents/reviews`;
+  const val = f => f ? (f.stringValue !== undefined ? f.stringValue : Number(f.integerValue)) : undefined;
+
+  async function load(){
+    try{
+      const r = await fetch(url + "?pageSize=100&key=" + FIREBASE.apiKey);
+      const j = await r.json();
+      const real = (j.documents||[]).map(d => ({
+        name: val(d.fields.name), text: val(d.fields.text),
+        stars: val(d.fields.stars), at: val(d.fields.at)
+      })).filter(r => r.name && r.text && r.stars>=1 && r.stars<=5);
+      real.sort((a,b) => (b.at||0)-(a.at||0));
+      paint(real.length ? real : REVIEWS);
+    }catch(e){}
+  }
+  load();
+
+  $("#rvSend").addEventListener("click", async () => {
+    const name = $("#rvName").value.trim();
+    const text = $("#rvText").value.trim();
+    const pick = document.querySelector('input[name="rvs"]:checked');
+    if(!name || !pick || !text) return msg("Preencha o nome, escolha a nota e escreva o comentário.");
+    $("#rvSend").disabled = true;
+    try{
+      const r = await fetch(url + "?key=" + FIREBASE.apiKey, {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({fields:{
+          name:{stringValue:name}, text:{stringValue:text},
+          stars:{integerValue:String(pick.value)}, at:{integerValue:String(Date.now())}
+        }})
+      });
+      if(!r.ok) throw new Error();
+      msg("Obrigado! A sua avaliação já está visível.");
+      $("#rvText").value = "";
+      load();
+    }catch(e){ msg("Não foi possível publicar agora. Tente novamente."); }
+    $("#rvSend").disabled = false;
+  });
+})();
+
+render();
+</script>
+</body>
+</html>
